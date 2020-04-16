@@ -1,0 +1,23 @@
+apply plugin: 'org.springframework.boot'
+
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    implementation project(':model')
+    implementation project(':usecase')
+    implementation project(':api-rest')
+    //implementation project(':mongo-repository')
+    implementation project(':jpa-repository')
+
+    compile 'org.postgresql:postgresql:42.2.8.jre7'
+    compile 'org.reactivecommons.utils:object-mapper:0.1.0'
+    compile 'org.apache.commons:commons-dbcp2:2.2.0'
+
+    runtime('org.springframework.boot:spring-boot-devtools')
+}
+task explodedJar(type: Copy) {
+    with jar
+    into "${buildDir}/exploded"
+}

@@ -1,0 +1,28 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+		springCloudVersion = 'Greenwich.M1'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id "org.sonarqube" version "2.6"
+	id "co.com.bancolombia.cleanArchitecture" version "1.5.3"
+}
+subprojects {
+  apply plugin: "java"
+  apply plugin: "jacoco"
+    // Disable the test report for the individual test task
+    test {
+      reports.html.enabled = false
+    }
+}
+apply from: './main.gradle'

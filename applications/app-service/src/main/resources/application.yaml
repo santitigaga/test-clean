@@ -1,0 +1,34 @@
+##Spring Configuration
+server:
+  port: 8080
+spring:
+  application:
+    name: cleanArchitecture
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp:
+          use_jdbc_metadata_defaults: false
+
+## MONGO Configuration
+mongoConfig:
+  user: root
+  password: dojoclean123
+  connectionString: mongodb://%s:%s
+  database: dojo
+## JPA Configuration
+jpa:
+  driver: org.postgresql.Driver
+  connection:
+    url: jdbc:postgresql://%s:%s/%s
+    password: dojoclean123
+    user: postgres
+    host: 192.168.99.100
+    port: 5432
+    dbName: dojo
